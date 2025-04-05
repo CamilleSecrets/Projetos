@@ -77,14 +77,30 @@ body{
 
 }
 
-.video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    aspect-ratio: 16 / 9;
-    object-fit: cover; /* ou use 'contain' se preferir ver tudo */
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+        aspect-ratio: 16 / 9;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
+/* Centraliza o modal */
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 1rem;
+  }
+}
 #loader {
             position: fixed;
             top: 0;
@@ -335,227 +351,104 @@ body{
         </div>
         <!-- Portfolio Modals-->
  
-    <!-- Modelo de Modal -->
-<!-- Basta duplicar este bloco e trocar os dados -->
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+<!-- Modal Template (1 a 6) -->
+<!-- Duplicar e trocar apenas ID, título, vídeo e descrição -->
+<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow">
       <div class="modal-header border-0">
-        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </div>
-      <div class="modal-body text-center pb-5">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <!-- Title -->
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projeto 1</h2>
-              <!-- Divider -->
-              <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-              </div>
-              <!-- Video -->
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="video-container text-center">
-                  <iframe class="responsive-iframe" width="560" height="315"
-                    src="https://www.youtube.com/embed/6Z79fOVQrfI?si=0ZL-VlUP3ZgiaCKo"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-              </div>
-              <!-- Description -->
-              <h5 class="mb-4"><strong>Esses são meus projetos em HTML, CSS e Javascript</strong></h5>
-              <!-- Close Button -->
-              <button style="background-color: #000; color: white;" class="btn btn-primary" data-bs-dismiss="modal">
-                <i class="fas fa-xmark fa-fw"></i> Fechar janela
-              </button>
-            </div>
-          </div>
+      <div class="modal-body text-center">
+        <h2 class="portfolio-modal-title text-uppercase text-secondary mb-4">Projeto 1</h2>
+        <div class="divider-custom mb-4">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
         </div>
+        <div class="video-container mb-4">
+          <iframe class="responsive-iframe" src="https://www.youtube.com/embed/6Z79fOVQrfI?si=0ZL-VlUP3ZgiaCKo" title="YouTube video player" allowfullscreen></iframe>
+        </div>
+        <h5><strong>Esses são meus projetos em HTML, CSS e Javascript</strong></h5>
+        <button class="btn btn-dark mt-4" data-bs-dismiss="modal">
+          <i class="fas fa-xmark fa-fw"></i> Fechar janela
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modais 2 a 6 (copie esse template e troque os dados abaixo) -->
-
-<!-- Modal 2 -->
-<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-      <div class="modal-body text-center pb-5">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projeto 2</h2>
-              <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-              </div>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="video-container text-center">
-                  <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/Dklrf10nk7o?si=0DYTF_lNVQhH7TAq"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-              </div>
-              <h5 class="mb-4"><strong>Esses é meu projeto usando uma framework de Javascript em node.js e react.js era para ser uma E-Commerce, mas ficou faltando algumas coisas</strong></h5>
-              <button style="background-color: #000; color: white;" class="btn btn-primary" data-bs-dismiss="modal">
-                <i class="fas fa-xmark fa-fw"></i> Fechar janela
-              </button>
-            </div>
-          </div>
-        </div>
+<!-- Modals 2 a 6 -->
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body text-center">
+        <h2 class="portfolio-modal-title text-uppercase text-secondary mb-4">Projeto 2</h2>
+        <div class="divider-custom mb-4"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-star"></i></div><div class="divider-custom-line"></div></div>
+        <div class="video-container mb-4"><iframe class="responsive-iframe" src="https://www.youtube.com/embed/Dklrf10nk7o?si=0DYTF_lNVQhH7TAq" allowfullscreen></iframe></div>
+        <h5><strong>Projeto usando Node.js e React.js para um E-Commerce (incompleto)</strong></h5>
+        <button class="btn btn-dark mt-4" data-bs-dismiss="modal"><i class="fas fa-xmark fa-fw"></i> Fechar janela</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal 3 -->
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-      <div class="modal-body text-center pb-5">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projeto 3</h2>
-              <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-              </div>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="video-container text-center">
-                  <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/rdXlVZABsCs?si=MDEn-pfCcZ6yiEet"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-              </div>
-              <h5 class="mb-4"><strong>Um projeto em JavaFX é uma aplicação resumindo que rodo de modo desktop em Java</strong></h5>
-              <button style="background-color: #000; color: white;" class="btn btn-primary" data-bs-dismiss="modal">
-                <i class="fas fa-xmark fa-fw"></i> Fechar janela
-              </button>
-            </div>
-          </div>
-        </div>
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body text-center">
+        <h2 class="portfolio-modal-title text-uppercase text-secondary mb-4">Projeto 3</h2>
+        <div class="divider-custom mb-4"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-star"></i></div><div class="divider-custom-line"></div></div>
+        <div class="video-container mb-4"><iframe class="responsive-iframe" src="https://www.youtube.com/embed/rdXlVZABsCs?si=MDEn-pfCcZ6yiEet" allowfullscreen></iframe></div>
+        <h5><strong>Projeto desktop usando JavaFX</strong></h5>
+        <button class="btn btn-dark mt-4" data-bs-dismiss="modal"><i class="fas fa-xmark fa-fw"></i> Fechar janela</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal 4 -->
-<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-      <div class="modal-body text-center pb-5">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projeto 4</h2>
-              <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-              </div>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="video-container text-center">
-                  <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/kaQ21zzBSRQ?si=0zJYfxcsgIufzFyY"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-              </div>
-              <h5 class="mb-4"><strong>Um aplicação Web em springboot com o front-end e o back-end. Um desafio também de uma comunidade chamada Ada</strong></h5>
-              <button style="background-color: #000; color: white;" class="btn btn-primary" data-bs-dismiss="modal">
-                <i class="fas fa-xmark fa-fw"></i> Fechar janela
-              </button>
-            </div>
-          </div>
-        </div>
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body text-center">
+        <h2 class="portfolio-modal-title text-uppercase text-secondary mb-4">Projeto 4</h2>
+        <div class="divider-custom mb-4"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-star"></i></div><div class="divider-custom-line"></div></div>
+        <div class="video-container mb-4"><iframe class="responsive-iframe" src="https://www.youtube.com/embed/kaQ21zzBSRQ?si=0zJYfxcsgIufzFyY" allowfullscreen></iframe></div>
+        <h5><strong>Aplicação web completa em Spring Boot (Desafio da Ada)</strong></h5>
+        <button class="btn btn-dark mt-4" data-bs-dismiss="modal"><i class="fas fa-xmark fa-fw"></i> Fechar janela</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal 5 -->
-<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-      <div class="modal-body text-center pb-5">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projeto 5</h2>
-              <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-              </div>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="video-container text-center">
-                  <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/Wi3Kys17v70?si=f1e5FVRXfG7Gq6EW"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-              </div>
-              <h5 class="mb-4"><strong>O back-end do mesmo desafio em springboot web Java do projeto 4</strong></h5>
-              <button style="background-color: #000; color: white;" class="btn btn-primary" data-bs-dismiss="modal">
-                <i class="fas fa-xmark fa-fw"></i> Fechar janela
-              </button>
-            </div>
-          </div>
-        </div>
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body text-center">
+        <h2 class="portfolio-modal-title text-uppercase text-secondary mb-4">Projeto 5</h2>
+        <div class="divider-custom mb-4"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-star"></i></div><div class="divider-custom-line"></div></div>
+        <div class="video-container mb-4"><iframe class="responsive-iframe" src="https://www.youtube.com/embed/Wi3Kys17v70?si=f1e5FVRXfG7Gq6EW" allowfullscreen></iframe></div>
+        <h5><strong>Back-end do projeto 4 em Spring Boot</strong></h5>
+        <button class="btn btn-dark mt-4" data-bs-dismiss="modal"><i class="fas fa-xmark fa-fw"></i> Fechar janela</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal 6 -->
-<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-      <div class="modal-body text-center pb-5">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projeto 6</h2>
-              <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-              </div>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="video-container text-center">
-                  <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/SEU_VIDEO_ID"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-              </div>
-              <h5 class="mb-4"><strong>Descrição do projeto 6...</strong></h5>
-              <button style="background-color: #000; color: white;" class="btn btn-primary" data-bs-dismiss="modal">
-                <i class="fas fa-xmark fa-fw"></i> Fechar janela
-              </button>
-            </div>
-          </div>
-        </div>
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body text-center">
+        <h2 class="portfolio-modal-title text-uppercase text-secondary mb-4">Projeto 6</h2>
+        <div class="divider-custom mb-4"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="fas fa-star"></i></div><div class="divider-custom-line"></div></div>
+        <div class="video-container mb-4"><iframe class="responsive-iframe" src="https://www.youtube.com/embed/SEU-LINK-AQUI" allowfullscreen></iframe></div>
+        <h5><strong>Descrição do projeto 6</strong></h5>
+        <button class="btn btn-dark mt-4" data-bs-dismiss="modal"><i class="fas fa-xmark fa-fw"></i> Fechar janela</button>
       </div>
     </div>
   </div>

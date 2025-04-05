@@ -97,13 +97,17 @@ body{
         .hidden {
             display: none;
         }
-       .modal-backdrop.show {
-  opacity: 0.9; /* ou o valor que quiser */
+.modal-backdrop {
   z-index: 1040 !important;
 }
 
-.modal.show {
-  z-index: 1050 !important;
+.modal {
+  z-index: 1055 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
 }
    </style>
 </head>
